@@ -1,13 +1,247 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  overflow-x: hidden;
+}
+
+.card {
+    height: 700px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.profile-pic {
+    border-radius: 5px;
+    height: 300px;
+    width: 300px;
+    box-shadow: 15px 10px 30px 5px rgba(0, 0, 0, 0.20);
+}
+
+.img-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container {
+    margin-top: 50px;
+}
+
+.quote {
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.name {
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 50px;
+    margin-bottom: 1px;
+}
+
+.job {
+    font-weight: 300;
+    color: rgb(163, 163, 163);
+}
+
+.button {
+    overflow: hidden;
+    background-color: white;
+    bottom: -20px;
+    position: absolute;
+    border-radius: 20px;
+    box-shadow: 15px 10px 30px 5px rgba(0, 0, 0, 0.20);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+}
+
+.button button {
+    color: grey;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+.button div:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+.pattern-quotes {
+    position: absolute;
+    z-index: -1;
+    bottom: 300px;
+    height: 50px;
+}
+
+.pattern-bg {
+    position: fixed;
+    top: 0;
+    height: 47%;
+}
+
+.pattern-curve {
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: -1;
+
+}
+
+/* for desktop */
+@media screen and (min-width: 968px) {
+    .card {
+        margin-left: 100px;
+        margin-right: 100px;
+        display: flex;
+        flex-direction: row-reverse;
+        min-width: 800px;
+        width: 800px;
+        height: 500px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .profile-pic {
+        width: 350px;
+        height: 350px;
+
+    }
+
+    .button {
+        left: 40px;
+    }
+
+    .img-container {
+        position: absolute;
+        right: -60px;
+        bottom: 100px;
+    }
+
+    .text-container {
+        z-index: 5;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        width: 1000px;
+        padding-right: 260px;
+    }
+
+    .quote {
+        margin: 0;
+        padding: 0;
+        margin-left: 25px;
+    }
+
+    .name {
+        margin: 0;
+        padding: 0;
+    }
+
+    .job {
+        margin: 0;
+        padding: 0;
+        color: grey;
+    }
+
+    .info {
+        display: flex;
+        margin-top: 50px;
+        margin-left: 25px;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .pattern-quotes {
+        position: absolute;
+        z-index: -1;
+        height: 20%;
+        left: 120px;
+        top: 100px;
+    }
+
+    .pattern-bg {
+        position: absolute;
+        height: 100%;
+        right: -100px;
+        bottom: 30px;
+    }
+}
+
+@keyframes slideleft {
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideright {
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes sliderightin {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slideleftin {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
 }
