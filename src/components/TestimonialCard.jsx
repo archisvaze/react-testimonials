@@ -4,21 +4,30 @@ export default function TestimonialCard({ testimonials }) {
 
   const [index, setindex] = useState(0);
 
-  const [animate, setanimate] = useState(false)
+  const [animation, setanimation] = useState('')
 
-  function clickNext() {
-    if (index >= testimonials.length - 1) setindex(0);
-    else setindex(index + 1);
+  function clickHandler(dir) {
+    if (dir === "next") {
+      setanimation("slideRightOut")
+      setTimeout(() => {
+        if (index >= testimonials.length - 1) setindex(0);
+        else setindex(index + 1);
+        setanimation("slideRightIn")
+      }, 400)
 
-    setanimate(true);
-    setTimeout(() => {
-      setanimate(false);
-    }, 100)
+    }
+    else {
+      setanimation("slideLeftOut")
+      setTimeout(() => {
+        if (index <= 0) setindex(testimonials.length - 1);
+        else setindex(index - 1);
+        setanimation("slideLeftIn")
+      }, 400)
+    }
   }
-  function clickPrev() {
-    if (index <= 0) setindex(testimonials.length - 1);
-    else setindex(index - 1);
-  }
+
+
+
 
   return (
     <>
@@ -30,19 +39,22 @@ export default function TestimonialCard({ testimonials }) {
 
 
         <div className="img-container">
-          <img src={testimonials[index].pic} alt="" className="profile-pic" />
+
+          <img src={testimonials[index].pic} alt="" className={"profile-pic " + animation} />
+
+
           <div className="button">
-            <button onClick={() => { clickPrev() }} className="prev">&lt;</button>
-            <button onClick={() => { clickNext() }} className="next">&gt;</button>
+            <button onClick={() => { clickHandler("prev") }} className="prev">&lt;</button>
+            <button onClick={() => { clickHandler("next") }} className="next">&gt;</button>
           </div>
         </div>
 
 
         <div className="text-container">
-          <p className="quote">{testimonials[index].quote}</p>
+          <p className={"quote " + animation}>{testimonials[index].quote}</p>
           <div className="info">
-            <p className="name">{testimonials[index].name}</p>
-            <p className="job">{testimonials[index].job}</p>
+            <p className={"name " + animation}>{testimonials[index].name}</p>
+            <p className={"job " + animation}>{testimonials[index].job}</p>
           </div>
         </div>
 
